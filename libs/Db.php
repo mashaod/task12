@@ -28,10 +28,7 @@ Class Db extends Sql
         if(!empty($this->selectVal))
         {
             $sth = $this->db->query($this->sql);
-            while($row = $sth->fetch(PDO::FETCH_ASSOC))
-            {
-                $result[] = $row['data']; 
-            }
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
         elseif(!empty($this->insertVal) || !empty($this->updateVal))
